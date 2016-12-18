@@ -1,0 +1,1150 @@
+
+vars-100-10.cnf 
+
+-----------
+- Picosat -
+-----------
+
+Satisfiability: UNSATISFIABLE
+Decisions: 601
+Time: 0.0 seconds
+Propagations/second: 2.6 megaprops/second
+
+----------------------
+- SAT-solver-time -
+----------------------
+
+s UNSATISFIABLE
+c 0 seconds total run time
+c 114725 propagations
+c inf megaprops/second
+c 943 decisions
+
+===================================
+
+vars-100-1.cnf 
+
+-----------
+- Picosat -
+-----------
+
+Satisfiability: SATISFIABLE
+Decisions: 329
+Time: 0.0 seconds
+Propagations/second: 2.8 megaprops/second
+
+----------------------
+- SAT-solver-time -
+----------------------
+
+s SATISFIABLE
+c 0 seconds total run time
+c 30978 propagations
+c inf megaprops/second
+c 240 decisions
+
+===================================
+
+vars-100-2.cnf 
+
+-----------
+- Picosat -
+-----------
+
+Satisfiability: SATISFIABLE
+Decisions: 373
+Time: 0.0 seconds
+Propagations/second: 3.1 megaprops/second
+
+----------------------
+- SAT-solver-time -
+----------------------
+
+s SATISFIABLE
+c 0 seconds total run time
+c 3846 propagations
+c inf megaprops/second
+c 43 decisions
+
+===================================
+
+vars-100-3.cnf 
+
+-----------
+- Picosat -
+-----------
+
+Satisfiability: UNSATISFIABLE
+Decisions: 577
+Time: 0.0 seconds
+Propagations/second: 3.7 megaprops/second
+
+----------------------
+- SAT-solver-time -
+----------------------
+
+s UNSATISFIABLE
+c 0 seconds total run time
+c 140950 propagations
+c inf megaprops/second
+c 1152 decisions
+
+===================================
+
+vars-100-4.cnf 
+
+-----------
+- Picosat -
+-----------
+
+Satisfiability: UNSATISFIABLE
+Decisions: 694
+Time: 0.0 seconds
+Propagations/second: 4.3 megaprops/second
+
+----------------------
+- SAT-solver-time -
+----------------------
+
+s UNSATISFIABLE
+c 0 seconds total run time
+c 160585 propagations
+c inf megaprops/second
+c 1319 decisions
+
+===================================
+
+vars-100-5.cnf 
+
+-----------
+- Picosat -
+-----------
+
+Satisfiability: SATISFIABLE
+Decisions: 278
+Time: 0.0 seconds
+Propagations/second: 3.4 megaprops/second
+
+----------------------
+- SAT-solver-time -
+----------------------
+
+s SATISFIABLE
+c 0 seconds total run time
+c 34817 propagations
+c inf megaprops/second
+c 270 decisions
+
+===================================
+
+vars-100-6.cnf 
+
+-----------
+- Picosat -
+-----------
+
+Satisfiability: SATISFIABLE
+Decisions: 666
+Time: 0.0 seconds
+Propagations/second: 4.0 megaprops/second
+
+----------------------
+- SAT-solver-time -
+----------------------
+
+s SATISFIABLE
+c 0 seconds total run time
+c 257918 propagations
+c inf megaprops/second
+c 2125 decisions
+
+===================================
+
+vars-100-7.cnf 
+
+-----------
+- Picosat -
+-----------
+
+Satisfiability: SATISFIABLE
+Decisions: 168
+Time: 0.0 seconds
+Propagations/second: 4.2 megaprops/second
+
+----------------------
+- SAT-solver-time -
+----------------------
+
+s SATISFIABLE
+c 0 seconds total run time
+c 89251 propagations
+c inf megaprops/second
+c 710 decisions
+
+===================================
+
+vars-100-8.cnf 
+
+-----------
+- Picosat -
+-----------
+
+Satisfiability: SATISFIABLE
+Decisions: 39
+Time: 0.0 seconds
+Propagations/second: 0.5 megaprops/second
+
+----------------------
+- SAT-solver-time -
+----------------------
+
+s SATISFIABLE
+c 0 seconds total run time
+c 62603 propagations
+c inf megaprops/second
+c 517 decisions
+
+===================================
+
+vars-100-9.cnf 
+
+-----------
+- Picosat -
+-----------
+
+Satisfiability: UNSATISFIABLE
+Decisions: 428
+Time: 0.0 seconds
+Propagations/second: 3.9 megaprops/second
+
+----------------------
+- SAT-solver-time -
+----------------------
+
+s UNSATISFIABLE
+c 0 seconds total run time
+c 64353 propagations
+c inf megaprops/second
+c 507 decisions
+
+===================================
+
+vars-150-10.cnf 
+
+-----------
+- Picosat -
+-----------
+
+Satisfiability: UNSATISFIABLE
+Decisions: 3145
+Time: 0.0 seconds
+Propagations/second: 5.4 megaprops/second
+
+----------------------
+- SAT-solver-time -
+----------------------
+
+s UNSATISFIABLE
+c 0 seconds total run time
+c 1651938 propagations
+c inf megaprops/second
+c 9711 decisions
+
+===================================
+
+vars-150-1.cnf 
+
+-----------
+- Picosat -
+-----------
+
+Satisfiability: SATISFIABLE
+Decisions: 893
+Time: 0.0 seconds
+Propagations/second: 2.9 megaprops/second
+
+----------------------
+- SAT-solver-time -
+----------------------
+
+s SATISFIABLE
+c 0 seconds total run time
+c 568080 propagations
+c inf megaprops/second
+c 3469 decisions
+
+===================================
+
+vars-150-2.cnf 
+
+-----------
+- Picosat -
+-----------
+
+Satisfiability: SATISFIABLE
+Decisions: 3190
+Time: 0.0 seconds
+Propagations/second: 5.9 megaprops/second
+
+----------------------
+- SAT-solver-time -
+----------------------
+
+s SATISFIABLE
+c 0 seconds total run time
+c 1326880 propagations
+c inf megaprops/second
+c 8076 decisions
+
+===================================
+
+vars-150-3.cnf 
+
+-----------
+- Picosat -
+-----------
+
+Satisfiability: SATISFIABLE
+Decisions: 1563
+Time: 0.0 seconds
+Propagations/second: 6.8 megaprops/second
+
+----------------------
+- SAT-solver-time -
+----------------------
+
+s SATISFIABLE
+c 0 seconds total run time
+c 1123642 propagations
+c inf megaprops/second
+c 6738 decisions
+
+===================================
+
+vars-150-4.cnf 
+
+-----------
+- Picosat -
+-----------
+
+Satisfiability: SATISFIABLE
+Decisions: 1646
+Time: 0.0 seconds
+Propagations/second: 6.2 megaprops/second
+
+----------------------
+- SAT-solver-time -
+----------------------
+
+s SATISFIABLE
+c 0 seconds total run time
+c 2784236 propagations
+c inf megaprops/second
+c 16715 decisions
+
+===================================
+
+vars-150-5.cnf 
+
+-----------
+- Picosat -
+-----------
+
+Satisfiability: UNSATISFIABLE
+Decisions: 3002
+Time: 0.0 seconds
+Propagations/second: 5.7 megaprops/second
+
+----------------------
+- SAT-solver-time -
+----------------------
+
+s UNSATISFIABLE
+c 0 seconds total run time
+c 1506300 propagations
+c inf megaprops/second
+c 9026 decisions
+
+===================================
+
+vars-150-6.cnf 
+
+-----------
+- Picosat -
+-----------
+
+Satisfiability: SATISFIABLE
+Decisions: 270
+Time: 0.0 seconds
+Propagations/second: 7.7 megaprops/second
+
+----------------------
+- SAT-solver-time -
+----------------------
+
+s SATISFIABLE
+c 0 seconds total run time
+c 300517 propagations
+c inf megaprops/second
+c 1837 decisions
+
+===================================
+
+vars-150-7.cnf 
+
+-----------
+- Picosat -
+-----------
+
+Satisfiability: UNSATISFIABLE
+Decisions: 2445
+Time: 0.0 seconds
+Propagations/second: 5.8 megaprops/second
+
+----------------------
+- SAT-solver-time -
+----------------------
+
+s UNSATISFIABLE
+c 0 seconds total run time
+c 1328548 propagations
+c inf megaprops/second
+c 8200 decisions
+
+===================================
+
+vars-150-8.cnf 
+
+-----------
+- Picosat -
+-----------
+
+Satisfiability: SATISFIABLE
+Decisions: 821
+Time: 0.0 seconds
+Propagations/second: 6.4 megaprops/second
+
+----------------------
+- SAT-solver-time -
+----------------------
+
+s SATISFIABLE
+c 0 seconds total run time
+c 6076 propagations
+c inf megaprops/second
+c 56 decisions
+
+===================================
+
+vars-150-9.cnf 
+
+-----------
+- Picosat -
+-----------
+
+Satisfiability: SATISFIABLE
+Decisions: 1263
+Time: 0.0 seconds
+Propagations/second: 6.3 megaprops/second
+
+----------------------
+- SAT-solver-time -
+----------------------
+
+s SATISFIABLE
+c 0 seconds total run time
+c 1301324 propagations
+c inf megaprops/second
+c 7716 decisions
+
+===================================
+
+vars-200-10.cnf 
+
+-----------
+- Picosat -
+-----------
+
+Satisfiability: UNSATISFIABLE
+Decisions: 18609
+Time: 0.2 seconds
+Propagations/second: 4.9 megaprops/second
+
+----------------------
+- SAT-solver-time -
+----------------------
+
+s UNSATISFIABLE
+c 1 seconds total run time
+c 20147573 propagations
+c 20.1476 megaprops/second
+c 99741 decisions
+
+===================================
+
+vars-200-1.cnf 
+
+-----------
+- Picosat -
+-----------
+
+Satisfiability: UNSATISFIABLE
+Decisions: 15518
+Time: 0.1 seconds
+Propagations/second: 5.3 megaprops/second
+
+----------------------
+- SAT-solver-time -
+----------------------
+
+s UNSATISFIABLE
+c 0 seconds total run time
+c 14297878 propagations
+c inf megaprops/second
+c 68736 decisions
+
+===================================
+
+vars-200-2.cnf 
+
+-----------
+- Picosat -
+-----------
+
+Satisfiability: SATISFIABLE
+Decisions: 4558
+Time: 0.0 seconds
+Propagations/second: 5.9 megaprops/second
+
+----------------------
+- SAT-solver-time -
+----------------------
+
+s SATISFIABLE
+c 0 seconds total run time
+c 335348 propagations
+c inf megaprops/second
+c 1773 decisions
+
+===================================
+
+vars-200-3.cnf 
+
+-----------
+- Picosat -
+-----------
+
+Satisfiability: UNSATISFIABLE
+Decisions: 18580
+Time: 0.2 seconds
+Propagations/second: 5.1 megaprops/second
+
+----------------------
+- SAT-solver-time -
+----------------------
+
+s UNSATISFIABLE
+c 0 seconds total run time
+c 17904017 propagations
+c inf megaprops/second
+c 89616 decisions
+
+===================================
+
+vars-200-4.cnf 
+
+-----------
+- Picosat -
+-----------
+
+Satisfiability: UNSATISFIABLE
+Decisions: 7299
+Time: 0.1 seconds
+Propagations/second: 5.7 megaprops/second
+
+----------------------
+- SAT-solver-time -
+----------------------
+
+s UNSATISFIABLE
+c 1 seconds total run time
+c 6855996 propagations
+c 6.856 megaprops/second
+c 34511 decisions
+
+===================================
+
+vars-200-5.cnf 
+
+-----------
+- Picosat -
+-----------
+
+Satisfiability: UNSATISFIABLE
+Decisions: 11554
+Time: 0.1 seconds
+Propagations/second: 5.3 megaprops/second
+
+----------------------
+- SAT-solver-time -
+----------------------
+
+s UNSATISFIABLE
+c 0 seconds total run time
+c 10431813 propagations
+c inf megaprops/second
+c 51237 decisions
+
+===================================
+
+vars-200-6.cnf 
+
+-----------
+- Picosat -
+-----------
+
+Satisfiability: SATISFIABLE
+Decisions: 25253
+Time: 0.2 seconds
+Propagations/second: 4.7 megaprops/second
+
+----------------------
+- SAT-solver-time -
+----------------------
+
+s SATISFIABLE
+c 1 seconds total run time
+c 25699052 propagations
+c 25.6991 megaprops/second
+c 127146 decisions
+
+===================================
+
+vars-200-7.cnf 
+
+-----------
+- Picosat -
+-----------
+
+Satisfiability: UNSATISFIABLE
+Decisions: 26315
+Time: 0.2 seconds
+Propagations/second: 4.7 megaprops/second
+
+----------------------
+- SAT-solver-time -
+----------------------
+
+s UNSATISFIABLE
+c 1 seconds total run time
+c 34509739 propagations
+c 34.5097 megaprops/second
+c 167427 decisions
+
+===================================
+
+vars-200-8.cnf 
+
+-----------
+- Picosat -
+-----------
+
+Satisfiability: SATISFIABLE
+Decisions: 9299
+Time: 0.1 seconds
+Propagations/second: 3.8 megaprops/second
+
+----------------------
+- SAT-solver-time -
+----------------------
+
+s SATISFIABLE
+c 0 seconds total run time
+c 1775256 propagations
+c inf megaprops/second
+c 8684 decisions
+
+===================================
+
+vars-200-9.cnf 
+
+-----------
+- Picosat -
+-----------
+
+Satisfiability: SATISFIABLE
+Decisions: 8293
+Time: 0.1 seconds
+Propagations/second: 5.6 megaprops/second
+
+----------------------
+- SAT-solver-time -
+----------------------
+
+s SATISFIABLE
+c 0 seconds total run time
+c 8997616 propagations
+c inf megaprops/second
+c 44707 decisions
+
+===================================
+
+vars-250-10.cnf 
+
+-----------
+- Picosat -
+-----------
+
+Satisfiability: SATISFIABLE
+Decisions: 50074
+Time: 0.5 seconds
+Propagations/second: 4.6 megaprops/second
+
+----------------------
+- SAT-solver-time -
+----------------------
+
+s SATISFIABLE
+c 1 seconds total run time
+c 13117759 propagations
+c 13.1178 megaprops/second
+c 56286 decisions
+
+===================================
+
+vars-250-1.cnf 
+
+-----------
+- Picosat -
+-----------
+
+Satisfiability: UNSATISFIABLE
+Decisions: 80183
+Time: 1.0 seconds
+Propagations/second: 3.8 megaprops/second
+
+----------------------
+- SAT-solver-time -
+----------------------
+
+s UNSATISFIABLE
+c 4 seconds total run time
+c 124118887 propagations
+c 31.0297 megaprops/second
+c 527213 decisions
+
+===================================
+
+vars-250-2.cnf 
+
+-----------
+- Picosat -
+-----------
+
+Satisfiability: UNSATISFIABLE
+Decisions: 123065
+Time: 1.8 seconds
+Propagations/second: 3.4 megaprops/second
+
+----------------------
+- SAT-solver-time -
+----------------------
+
+s UNSATISFIABLE
+c 7 seconds total run time
+c 216656483 propagations
+c 30.9509 megaprops/second
+c 923717 decisions
+
+===================================
+
+vars-250-3.cnf 
+
+-----------
+- Picosat -
+-----------
+
+Satisfiability: SATISFIABLE
+Decisions: 55647
+Time: 0.7 seconds
+Propagations/second: 4.2 megaprops/second
+
+----------------------
+- SAT-solver-time -
+----------------------
+
+s SATISFIABLE
+c 2 seconds total run time
+c 41407032 propagations
+c 20.7035 megaprops/second
+c 177259 decisions
+
+===================================
+
+vars-250-4.cnf 
+
+-----------
+- Picosat -
+-----------
+
+Satisfiability: SATISFIABLE
+Decisions: 24905
+Time: 0.2 seconds
+Propagations/second: 4.9 megaprops/second
+
+----------------------
+- SAT-solver-time -
+----------------------
+
+s SATISFIABLE
+c 2 seconds total run time
+c 77578600 propagations
+c 38.7893 megaprops/second
+c 326807 decisions
+
+===================================
+
+vars-250-5.cnf 
+
+-----------
+- Picosat -
+-----------
+
+Satisfiability: UNSATISFIABLE
+Decisions: 104613
+Time: 1.4 seconds
+Propagations/second: 3.8 megaprops/second
+
+----------------------
+- SAT-solver-time -
+----------------------
+
+s UNSATISFIABLE
+c 4 seconds total run time
+c 134552553 propagations
+c 33.6381 megaprops/second
+c 568003 decisions
+
+===================================
+
+vars-250-6.cnf 
+
+-----------
+- Picosat -
+-----------
+
+Satisfiability: UNSATISFIABLE
+Decisions: 136808
+Time: 2.0 seconds
+Propagations/second: 3.4 megaprops/second
+
+----------------------
+- SAT-solver-time -
+----------------------
+
+s UNSATISFIABLE
+c 8 seconds total run time
+c 257074072 propagations
+c 32.1343 megaprops/second
+c 1097455 decisions
+
+===================================
+
+vars-250-7.cnf 
+
+-----------
+- Picosat -
+-----------
+
+Satisfiability: SATISFIABLE
+Decisions: 56870
+Time: 0.7 seconds
+Propagations/second: 4.2 megaprops/second
+
+----------------------
+- SAT-solver-time -
+----------------------
+
+s SATISFIABLE
+c 0 seconds total run time
+c 20340462 propagations
+c inf megaprops/second
+c 87686 decisions
+
+===================================
+
+vars-250-8.cnf 
+
+-----------
+- Picosat -
+-----------
+
+Satisfiability: UNSATISFIABLE
+Decisions: 92288
+Time: 1.2 seconds
+Propagations/second: 3.8 megaprops/second
+
+----------------------
+- SAT-solver-time -
+----------------------
+
+s UNSATISFIABLE
+c 7 seconds total run time
+c 241485175 propagations
+c 34.4979 megaprops/second
+c 1035965 decisions
+
+===================================
+
+vars-250-9.cnf 
+
+-----------
+- Picosat -
+-----------
+
+Satisfiability: SATISFIABLE
+Decisions: 32426
+Time: 0.3 seconds
+Propagations/second: 4.6 megaprops/second
+
+----------------------
+- SAT-solver-time -
+----------------------
+
+s SATISFIABLE
+c 2 seconds total run time
+c 81498767 propagations
+c 40.7494 megaprops/second
+c 348303 decisions
+
+===================================
+
+vars-300-10.cnf 
+
+-----------
+- Picosat -
+-----------
+
+Satisfiability: SATISFIABLE
+Decisions: 261765
+Time: 4.6 seconds
+Propagations/second: 3.2 megaprops/second
+
+----------------------
+- SAT-solver-time -
+----------------------
+
+s SATISFIABLE
+c 11 seconds total run time
+c 353814500 propagations
+c 32.165 megaprops/second
+c 1293730 decisions
+
+===================================
+
+vars-300-1.cnf 
+
+-----------
+- Picosat -
+-----------
+
+Satisfiability: SATISFIABLE
+Decisions: 668948
+Time: 17.5 seconds
+Propagations/second: 2.1 megaprops/second
+
+----------------------
+- SAT-solver-time -
+----------------------
+
+s SATISFIABLE
+c 2 seconds total run time
+c 75302506 propagations
+c 37.6513 megaprops/second
+c 286192 decisions
+
+===================================
+
+vars-300-2.cnf 
+
+-----------
+- Picosat -
+-----------
+
+Satisfiability: UNSATISFIABLE
+Decisions: 647130
+Time: 16.8 seconds
+Propagations/second: 2.2 megaprops/second
+
+----------------------
+- SAT-solver-time -
+----------------------
+
+s UNSATISFIABLE
+c 48 seconds total run time
+c 1471616666 propagations
+c 30.6587 megaprops/second
+c 5473695 decisions
+
+===================================
+
+vars-300-3.cnf 
+
+-----------
+- Picosat -
+-----------
+
+Satisfiability: UNSATISFIABLE
+Decisions: 354511
+Time: 7.5 seconds
+Propagations/second: 2.7 megaprops/second
+
+----------------------
+- SAT-solver-time -
+----------------------
+
+s UNSATISFIABLE
+c 31 seconds total run time
+c 966721521 propagations
+c 31.1846 megaprops/second
+c 3661523 decisions
+
+===================================
+
+vars-300-4.cnf 
+
+-----------
+- Picosat -
+-----------
+
+Satisfiability: UNSATISFIABLE
+Decisions: 479041
+Time: 10.7 seconds
+Propagations/second: 2.5 megaprops/second
+
+----------------------
+- SAT-solver-time -
+----------------------
+
+s UNSATISFIABLE
+c 72 seconds total run time
+c 2180624777 propagations
+c 30.2865 megaprops/second
+c 8242551 decisions
+
+===================================
+
+vars-300-5.cnf 
+
+-----------
+- Picosat -
+-----------
+
+Satisfiability: SATISFIABLE
+Decisions: 580334
+Time: 14.3 seconds
+Propagations/second: 2.3 megaprops/second
+
+----------------------
+- SAT-solver-time -
+----------------------
+
+s SATISFIABLE
+c 28 seconds total run time
+c 855254870 propagations
+c 30.5448 megaprops/second
+c 3183253 decisions
+
+===================================
+
+vars-300-6.cnf 
+
+-----------
+- Picosat -
+-----------
+
+Satisfiability: UNSATISFIABLE
+Decisions: 294491
+Time: 5.5 seconds
+Propagations/second: 3.0 megaprops/second
+
+----------------------
+- SAT-solver-time -
+----------------------
+
+s UNSATISFIABLE
+c 34 seconds total run time
+c 1066254519 propagations
+c 31.3604 megaprops/second
+c 3996356 decisions
+
+===================================
+
+vars-300-7.cnf 
+
+-----------
+- Picosat -
+-----------
+
+Satisfiability: SATISFIABLE
+Decisions: 113743
+Time: 1.7 seconds
+Propagations/second: 3.7 megaprops/second
+
+----------------------
+- SAT-solver-time -
+----------------------
+
+s SATISFIABLE
+c 9 seconds total run time
+c 271360586 propagations
+c 30.1512 megaprops/second
+c 1002847 decisions
+
+===================================
+
+vars-300-8.cnf 
+
+-----------
+- Picosat -
+-----------
+
+Satisfiability: UNSATISFIABLE
+Decisions: 558417
+Time: 13.7 seconds
+Propagations/second: 2.3 megaprops/second
+
+----------------------
+- SAT-solver-time -
+----------------------
+
+s UNSATISFIABLE
+c 52 seconds total run time
+c 1635148802 propagations
+c 31.4452 megaprops/second
+c 6096089 decisions
+
+===================================
+
+vars-300-9.cnf 
+
+-----------
+- Picosat -
+-----------
+
+Satisfiability: SATISFIABLE
+Decisions: 218985
+Time: 4.0 seconds
+Propagations/second: 3.1 megaprops/second
+
+----------------------
+- SAT-solver-time -
+----------------------
+
+s SATISFIABLE
+c 13 seconds total run time
+c 418805777 propagations
+c 32.2158 megaprops/second
+c 1585955 decisions
+
+===================================
