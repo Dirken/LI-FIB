@@ -41,25 +41,28 @@ writeClauses(Time):-
 defineTaskHour(Time):-
     task(T),                                                    %cogemos una tarea,
     duration(T,D),                                              %nos quedamos con su duración
-    NoTimeHours is Time- D+ 1,                                  %calculamos las horas que no nos caben
+    NoTimeHours is Time- D+1,                                   %calculamos las horas que no nos caben
     between(1,Time,H),                                          %para todas las horas,
     RemainingTime is D+1,                                       %cuando volverá a estar disponible
     between(RemainingTime, NoTimeHours, RemainingHours),        %de las horas restantes,
-    writeClause([\+start-T-RemainingTime,th-T-RemainingHours]) %definimos la variable th.
+    writeClause([\+start-T-RemainingTime,th-T-RemainingHours]), %definimos la variable th.
     fail.
 defineTaskHour(_).
 
 eachTaskStartsOnce(Time):-
     task(T),
-    between(1,Time, Hours),
-    findall(start-T-H,th-T-Hours, Res),
-    atMost(1, Res),
+    duration(T, D),
+    NoTimeHours is Time - D+1, 
+    findall(start-T-H,between(1,RemainingTime, H), Res),
+    exactly(1, Res),
     fail.
 eachTaskStartsOnce(_).
 
-
 useResourcesAvailable(Time):-
-
+    resourceUnits(R, Units),
+    between(1,Time, Hours),
+    findall(taskHour-T-Hours, (task(T,_,Resources), member(R,Resources)), Units),
+    atMost(Units, Res),
     fail.
 useResourcesAvailable(_).
 
@@ -194,4 +197,5 @@ expressAnd( Var, Lits ):- negate(Var,NVar), member(Lit,Lits),  writeClause([ NVa
 expressAnd( Var, Lits ):- negateAll(Lits,NLits), writeClause([ Var | NLits ]),!.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
