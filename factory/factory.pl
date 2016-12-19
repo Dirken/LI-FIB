@@ -15,7 +15,7 @@ symbolicOutput(0). % set to 1 to see symbolic output only; 0 otherwise.
 %% format:
 %% task( taskID, Duration, ListOFResourcesUsed ).
 %% resource( resourceID, NumUnitsAvailable ).
-:-include(easy152).  % simple input example file. Try the two given harder ones too!
+:-include(hardmayBe147).  % simple input example file. Try the two given harder ones too!
 
 %%%%%% Some helpful definitions to make the code cleaner:
 
@@ -24,15 +24,44 @@ duration(T,D):-        task(T,D,_).
 usesResource(T,R):-    task(T,_,L), member(R,L).
 
 % We use the following types of symbolic propositional variables:
-%   1. start-T-H means:  "task T starts at hour H"     (MANDATORY)
-%   2. ....
+%   start-T-H:  task T starts at hour H     (MANDATORY)
+%   th-T-H
 
 writeClauses(Time):- 
     initClauseGeneration,
+    defineTaskHour(Time),
     eachTaskStartsOnce(Time),
-    ...
+    useResourcesAvailable(Time),
     true,!.
 
+
+%%%%%%%%%%%%%%%%%%%%% Functions that we created to solve the problem exposed:
+
+%definimos la variable task-hour que llamaremos th-T-H
+defineTaskHour(Time):-
+    task(T),                                                    %cogemos una tarea,
+    duration(T,D),                                              %nos quedamos con su duración
+    NoTimeHours is Time- D+ 1,                                  %calculamos las horas que no nos caben
+    between(1,Time,H),                                          %para todas las horas,
+    RemainingTime is D+1,                                       %cuando volverá a estar disponible
+    between(RemainingTime, NoTimeHours, RemainingHours),        %de las horas restantes,
+    writeClause([\+start-T-RemainingTime,th-T-RemainingHours]) %definimos la variable th.
+    fail.
+defineTaskHour(_).
+
+eachTaskStartsOnce(Time):-
+    task(T),
+    between(1,Time, Hours),
+    findall(start-T-H,th-T-Hours, Res),
+    atMost(1, Res),
+    fail.
+eachTaskStartsOnce(_).
+
+
+useResourcesAvailable(Time):-
+
+    fail.
+useResourcesAvailable(_).
 
 
 %%%%%%%%%%%%%%%%%%%%% Auxiliary predicates for displaying the solutions and for counting the hours used:
