@@ -23,48 +23,49 @@ task(T):-              task(T,_,_).
 duration(T,D):-        task(T,D,_).
 usesResource(T,R):-    task(T,_,L), member(R,L).
 
+
+%%%%%% My definitions
+lastHour(Time, Duration,LastHour):-    LastHour is Time - Duration + 1.
+endHour(InitHour,Duration,EndHour):-   EndHour is InitHour + Duration - 1. 
+
 % We use the following types of symbolic propositional variables:
-%   start-T-H:  task T starts at hour H     (MANDATORY)
-%   th-T-H
+%   1. start-T-H means:  "task T starts at hour H"     (MANDATORY)
+%   2. th-T-H
 
 writeClauses(Time):- 
     initClauseGeneration,
-    defineTaskHour(Time),
     eachTaskStartsOnce(Time),
-    useResourcesAvailable(Time),
+    defineTH(Time),
+    limitResources(Time),
     true,!.
 
-
-%%%%%%%%%%%%%%%%%%%%% Functions that we created to solve the problem exposed:
-
-%definimos la variable task-hour que llamaremos th-T-H
-defineTaskHour(Time):-
-    task(T),                                                    %cogemos una tarea,
-    duration(T,D),                                              %nos quedamos con su duración
-    NoTimeHours is Time- D+1,                                   %calculamos las horas que no nos caben
-    between(1,Time,H),                                          %para todas las horas,
-    RemainingTime is D+1,                                       %cuando volverá a estar disponible
-    between(RemainingTime, NoTimeHours, RemainingHours),        %de las horas restantes,
-    writeClause([\+start-T-RemainingTime,th-T-RemainingHours]), %definimos la variable th.
-    fail.
-defineTaskHour(_).
-
 eachTaskStartsOnce(Time):-
-    task(T),
-    duration(T, D),
-    NoTimeHours is Time - D+1, 
-    findall(start-T-H,between(1,RemainingTime, H), Res),
-    exactly(1, Res),
+    task(TaskID),
+    duration(TaskID,Duration),
+    MaximumHour is Time + 1 -Duration,
+    findall(start-TaskID-Hour, between(1,MaximumHour,Hour) , Lits),
+    exactly(1, Lits),
     fail.
 eachTaskStartsOnce(_).
 
-useResourcesAvailable(Time):-
-    resourceUnits(R, Units),
-    between(1,Time, Hours),
-    findall(taskHour-T-Hours, (task(T,_,Resources), member(R,Resources)), Units),
-    atMost(Units, Res),
+defineTH(Time):-
+    task(TaskID),
+    duration(TaskID,Duration),
+    MaximumHour is Time + 1 - Duration,
+    between(1,MaximumHour, InitialHour),
+    MinimumHour is InitialHour + Duration - 1,
+    between(InitialHour,MinimumHour, PossibleHours),
+    writeClause([\+start-TaskID-InitialHour, th-TaskID-PossibleHours]),
     fail.
-useResourcesAvailable(_).
+defineTH(_).
+
+limitResources(Time):-
+    resourceUnits(ResourceID, NumUnitsAvailable),
+    between(1, Time, H),
+    findall(th-TaskID-H, (task(TaskID,_,ListOFResourcesUsed), member(ResourceID,ListOFResourcesUsed)), Res),
+    atMost(NumUnitsAvailable, Res),
+    fail.
+limitResources(_).
 
 
 %%%%%%%%%%%%%%%%%%%%% Auxiliary predicates for displaying the solutions and for counting the hours used:
@@ -77,7 +78,7 @@ displaySol(_):- nl,nl,   write('    '),
     write('12345678901234567890123456789012345678901234567890123456789012345678901234567890'),
     write('1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678'),nl,fail.
 displaySol(M):- task(T), writeNum2(T), member(start-T-H,M), duration(T,D),
-		B is H-1, writeX(' ',B), writeX('x',D), nl, fail.
+        B is H-1, writeX(' ',B), writeX('x',D), nl, fail.
 displaySol(_):- nl,nl,!.
 
 writeX(_,0):-!.
@@ -93,7 +94,7 @@ showSolIfBelow(_,_,_).
 
 main:-  symbolicOutput(1), !, writeClauses(30), halt.   % print the clauses in symbolic form and halt
 main:-  
-    tell(clauses), writeClauses(168), told,     % generate the (numeric) SAT clauses and call the solver
+    tell(clauses), writeClauses(150), told,     % generate the (numeric) SAT clauses and call the solver
     tell(header),  writeHeader,  told,
     numVars(N), numClauses(C), 
     write('Generated '), write(C), write(' clauses over '), write(N), write(' variables. '),nl,
@@ -105,7 +106,7 @@ main:-
 
 treatResult(20,[]       ):- write('No solution exists.'), nl, halt.
 treatResult(20,BestModel):- nl,nl,write('Optimal solution: '),nl, displaySol(BestModel), halt.
-treatResult(10,_):- %   shell('cat model',_),	
+treatResult(10,_):- %   shell('cat model',_),   
     see(model), symbolicModel(M), seen,  
     hoursUsed(M,K),
     write('plan found that takes '), write(K), write(' hours '),nl,nl, K1 is K-1,
@@ -197,5 +198,4 @@ expressAnd( Var, Lits ):- negate(Var,NVar), member(Lit,Lits),  writeClause([ NVa
 expressAnd( Var, Lits ):- negateAll(Lits,NLits), writeClause([ Var | NLits ]),!.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 
