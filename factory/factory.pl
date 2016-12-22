@@ -94,7 +94,7 @@ showSolIfBelow(_,_,_).
 
 main:-  symbolicOutput(1), !, writeClauses(30), halt.   % print the clauses in symbolic form and halt
 main:-  
-    tell(clauses), writeClauses(150), told,     % generate the (numeric) SAT clauses and call the solver
+    tell(clauses), writeClauses(168), told,     % generate the (numeric) SAT clauses and call the solver
     tell(header),  writeHeader,  told,
     numVars(N), numClauses(C), 
     write('Generated '), write(C), write(' clauses over '), write(N), write(' variables. '),nl,
