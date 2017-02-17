@@ -1,11 +1,3 @@
-/*
------------------------------------------
-|	Assignatura: LI Q2 2017				         |
-|	Nom: Ricard Meyerhofer Parra		       |
-|	Practica 1: Sat-solver.				         |
------------------------------------------
-*/
-
 #include <iostream>
 #include <stdlib.h>
 #include <algorithm>
@@ -24,13 +16,12 @@ vector<int> modelStack;
 uint indexOfNextLitToPropagate;
 uint decisionLevel;
 
+
+// Varibles introduides en el codi per a optimitzar-lo:
+vector<vector<int> > positiveClauses;
+vector<vector<int> > negativeClauses;
+
 vector<int> conflicts;
-
-vector<vector<int> > posClauses;
-vector<vector<int> > negClauses;
-
-uint nPropagations;
-uint nDecisions;
 
 //Si s'ordenen les clausules al inici els temps van millor tot i que la meva logica diu que no hauria de ser
 //aixi en general, ho entrego amb aixo doncs realment va mes rapid.
@@ -64,20 +55,15 @@ void readClauses( ){
   string aux;
   cin >> aux >> numVars >> numClauses;
   clauses.resize(numClauses);  
-  posClauses.resize(numVars+1);
-  negClauses.resize(numVars+1);
-  conflicts.resize(numVars+1,0);
-
+  // Read clauses
   for (uint i = 0; i < numClauses; ++i) {
     int lit;
-    while (cin >> lit and lit != 0) {
-      clauses[i].push_back(lit);
-    }
-    order(i);
-  }
-  create_structures();
+    while (cin >> lit and lit != 0) clauses[i].push_back(lit);
+  }    
 }
 
+
+// No modificada
 int currentValueInModel(int lit){
   if (lit >= 0) return model[lit];
   else {
@@ -86,12 +72,14 @@ int currentValueInModel(int lit){
   }
 }
 
+// No modificada
 void setLiteralToTrue(int lit){
   modelStack.push_back(lit);
   if (lit > 0) model[lit] = TRUE;
   else model[-lit] = FALSE;		
 }
 
+//Hem de propagar si tenim positiu, per les negatives i si tenim negatiu per les positives.
 bool propagateGivesConflict () {
   while ( indexOfNextLitToPropagate < modelStack.size() ) {
     int lit = modelStack[indexOfNextLitToPropagate];
@@ -131,6 +119,7 @@ bool propagateGivesConflict () {
 }
 
 
+// No modificada
 void backtrack(){
   uint i = modelStack.size() -1;
   int lit = 0;
@@ -147,31 +136,15 @@ void backtrack(){
   setLiteralToTrue(-lit);  // reverse last decision
 }
 
+// Millorar l'heuristica
 // Heuristic for finding the next decision literal:
 int getNextDecisionLiteral(){
-  ++nDecisions;
-  int big = 0;
-  bool divide = false;
-  int i = 1;
-  //primer element undef
-  while (big == 0 && i < numVars) { 
-  	if(model[i] == UNDEF) { 
-  		big = i; 
-  	}
-  	++i; 
-  }
-   //actualitzem maxim
-  for(int j = big; j < numVars; ++j) {
-  	if (conflicts[j] > numClauses) divide = true;
-    else if(model[j] == UNDEF and conflicts[j] > conflicts[big]) big = j;
-  }
-  //Dividim periodicament en el cas de que el nombre de conflictes sigui major al de clausules
-  //he provat diversos valors i es pel que millor ha anat
-  if (divide) for (int k = 1; k < numVars; ++k) conflicts[k] = conflicts[k] / 2;
-  return big;
+  for (uint i = 1; i <= numVars; ++i) // stupid heuristic:
+    if (model[i] == UNDEF) return i;  // returns first UNDEF var, positively
+  return 0; // reurns 0 when all literals are defined
 }
 
-
+// No modificada
 void checkmodel(){
   for (int i = 0; i < numClauses; ++i){
     bool someTrue = false;
@@ -251,4 +224,4 @@ int main(){
     ++decisionLevel;
     setLiteralToTrue(decisionLit);    // now push decisionLit on top of the mark
   }
-}
+} 
