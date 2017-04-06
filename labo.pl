@@ -56,6 +56,8 @@ eliminarRepetits([Ini|Rest], [Ini|Res]):- eliminarRepetits(Rest, Res).
 
 lado(N, N1) :-  N1 is N - 1.
 lado(N, N1) :-  N1 is N + 1.
+imprimirSol([]).
+imprimirSol([Sol|Sols]):-  write(Sol), nl, imprimirSol(Sols).
 
 casas:-	  Sol = [ [1,A1,B1,C1,D1,E1],
                   [2,A2,B2,C2,D2,E2],
@@ -88,5 +90,65 @@ member([ N4, _, "medico", _, _, _ ],Sol),
 lado(N4, N44),
 member([ N44, _, _, "ardilla", _, _ ],Sol),
 
-write(Sol), 
+imprimirSol(Sol), 
 nl.
+
+
+/*3. En el lenguaje de programacion "sumbol" un programa tiene la siguiente sintaxis:
+
+<programa>      -->    begin  <instrucciones>  end
+
+<instrucciones>   -->    <instruccion>
+<instrucciones>   -->    <instruccion> ; <instrucciones>  
+
+<instruccion>     -->    <variable> = <variable> + <variable>
+<instruccion>     -->    if <variable> = <variable> then <instrucciones> 
+         else <instrucciones>  endif
+<variable>    -->    x
+<variable>    -->    y
+<variable>    -->    z
+
+Tres ejemplos de programas sumbol:
+  begin x=x+z end
+  begin x=x+y; z=z+z; x=y+x end
+  begin x=y+z; if z=z then x=x+z; y=y+z else z=z+y endif; x=x+z end 
+
+Escribe en Prolog un sencillo analizador sintactico para el lenguaje
+sumbol, es decir, que se comporte así:
+
+?- programa( [begin, z, =, x, +, y, end] ).
+yes
+?- programa( [begin, z, =, x, +, y, ;, x, =, z, z, end] ).
+no
+
+(en el segundo ejemplo falta un "+").  
+Para ello, haz una clausula Prolog para cada regla de la gramatica, usando appends para
+separar las partes de la entrada (obligatorio).
+*/
+
+
+
+%programa([begin,x,=,y,+,z,;,x,=,z,+,y,end]).
+%programa( [begin, if, z, =, x,then, z, =, x, +, y, else, x, =, y, +, z, endif, end]).
+programa([]) :- write("yes").
+programa([begin|L]):- append(LS,[end],L), instruccion(LS).
+
+variable(x).
+variable(y).
+variable(z).
+
+instruccion([]) :- write("yes").
+instruccion([X,=,Y,+,Z]):- variable(X), variable(Y), variable(Z).
+instruccion(L):- append(LS,[;|LS2],L), instruccion(LS), instruccion(LS2).
+instruccion([if|L]):- 
+  append(LS,[endif], L), 
+  append(LS2,[then|LS3], LS), 
+  comp(LS2), 
+  append(LS4, [else|LS5], LS3), 
+  instruccion(LS4), 
+  instruccion(LS5), !,
+  write("yes"). 
+comp([X, =, Y]):- variable(X), variable(Y).
+
+
+
