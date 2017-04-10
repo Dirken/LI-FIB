@@ -24,6 +24,7 @@ symbolicOutput(0). % set to 1 to see symbolic output only; 0 otherwise.
 %%   format shown in entradapacking5.pl.
 
 %%%%%% Some helpful definitions to make the code cleaner:
+% rect(pieceNum,pieceWidth,pieceHeight)
 rect(B):-rect(B,_,_).
 xCoord(X) :- width(W),  between(1,W,X).
 yCoord(Y) :- height(H), between(1,H,Y).
@@ -39,33 +40,74 @@ insideTable(X,Y):- width(W), height(H), between(1,W,X), between(1,H,Y).
 
 
 writeClauses:-
-	eachPieceOnce,
+	assignPiece,
+	%fill,
+	noOverlapping,
     true.
 
-eachPieceOnce:-
+assignPiece:-
 	rect(B),
-	findall(starts-B-X-Y,fits(X,Y),Lits),
+	findall(starts-B-X-Y,itFits(X,Y),Lits),
 	exactly(1,Lits),
 	fail.
-eachPieceOnce.
+assignPiece.
 
-fits(X,Y):-
+itFits(X,Y):-
 	insideTable(X,Y),
 	width(B,W),
 	height(B,H),
-	X2 is W-X,
-	Y2 is H-Y,
+	X2 is W-X+1,
+	Y2 is H-Y+1,
 	insideTable(X2,Y2).
-fits.
+itFits.
+
+fill:-
+	rect(B),
+	height(B,H),
+	width(B,W),
+	insideTable(X,Y),
+	X2 is W+X-1,
+	Y2 is H+Y-1,
+	between(X,X2, ITX),
+	between(Y,Y2, ITY),
+	writeClause([\+starts-B-X-Y, fills-B-ITX-ITY]),
+	fail.
+fill.
+
+noOverlapping:-
+	rect(B),
+	rect(B2),
+	B \= B2,
+	insideTable(X,Y),
+	atMost(1, [starts-B-X-Y, starts-B2-X-Y]),
+	fail.
+noOverlapping.
 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%
 %%%%%% show the solution. Here M contains the literals that are true in the model:
 
-displaySol(M):-write(M),nl,fail.
+displaySol(M):- write(M),nl,fail.
 displaySol(_).
 
+writeLiterals(M,N):-
+	member(fills-B-X-Y,M),
+	rect(B,X,Y),
+	write(B),
+	write(' '),
+	N is N+1,
+	fail.
+writeLiterals.
+
+loop_entry(B,X,Y) :-
+  X > 0,
+  X1 is X - 1,
+  write(B),
+  write(' '),
+  nl,
+  loop_entry(B,X1,Y).
+loop_entry(B,X,Y).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 
