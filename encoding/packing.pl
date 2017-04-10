@@ -14,7 +14,7 @@ symbolicOutput(0). % set to 1 to see symbolic output only; 0 otherwise.
 %% 
 %% Note 2: All dimensions are integer numbers and are given in
 %% meters. Additionally, the larger piece of cloth is divided into
-%% square cells of dimension 1m x 1m, and every small piece must
+%% square cells of dimension 1m x 1m, and every small piece must be
 %% obtained exactly by choosing some of these cells
 %% 
 %% Extend this file to do this using a SAT solver, following the
@@ -32,11 +32,33 @@ height(B,H):- rect(B,_,H).
 insideTable(X,Y):- width(W), height(H), between(1,W,X), between(1,H,Y).
 
 %%%%%%  Variables: They might be useful
-% starts-B-X-Y:   box B has its left-bottom cell with upper-right coordinates (X,Y)
+%  starts-B-X-Y:   box B has its left-bottom cell with upper-right coordinates (X,Y)
 %  fills-B-X-Y:   box B fills cell with upper-right coordinates (X,Y)
+% cantonada esquerra inferior es starts i fills es tot el que pintaries dintre (inclós el starts)
+
+
 
 writeClauses:-
+	eachPieceOnce,
     true.
+
+eachPieceOnce:-
+	rect(B),
+	findall(starts-B-X-Y,fits(X,Y),Lits),
+	exactly(1,Lits),
+	fail.
+eachPieceOnce.
+
+fits(X,Y):-
+	insideTable(X,Y),
+	width(B,W),
+	height(B,H),
+	X2 is W-X,
+	Y2 is H-Y,
+	insideTable(X2,Y2).
+fits.
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%
 %%%%%% show the solution. Here M contains the literals that are true in the model:
@@ -87,7 +109,7 @@ numVars(N), numClauses(C),
 write('Generated '), write(C), write(' clauses over '), write(N), write(' variables. '),nl,
 shell('cat header clauses > infile.cnf',_),
 write('Calling solver....'), nl,
-shell('./picosat -v -o model infile.cnf', Result),  % if sat: Result=10; if unsat: Result=20.
+shell('picosat -v -o model infile.cnf', Result),  % if sat: Result=10; if unsat: Result=20.
 	treatResult(Result),!.
 
 treatResult(20):- write('Unsatisfiable'), nl, halt.
