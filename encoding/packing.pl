@@ -41,31 +41,28 @@ insideTable(X,Y):- width(W), height(H), between(1,W,X), between(1,H,Y).
 
 writeClauses:-
 	assignPiece,
-	%fill,
+	fill,
 	noOverlapping,
     true.
 
 assignPiece:-
 	rect(B),
-	findall(starts-B-X-Y,itFits(X,Y),Lits),
+	findall(starts-B-X-Y,itFits(B,X,Y),Lits),
 	exactly(1,Lits),
 	fail.
 assignPiece.
 
-itFits(X,Y):-
+itFits(B,X,Y):-
+	rect(B,W,H),
 	insideTable(X,Y),
-	width(B,W),
-	height(B,H),
-	X2 is W-X+1,
-	Y2 is H-Y+1,
+	X2 is W+X-1,
+	Y2 is H+Y-1,
 	insideTable(X2,Y2).
 itFits.
 
 fill:-
-	rect(B),
-	height(B,H),
-	width(B,W),
-	insideTable(X,Y),
+	rect(B,W,H),
+	itFits(B,X,Y),
 	X2 is W+X-1,
 	Y2 is H+Y-1,
 	between(X,X2, ITX),
@@ -79,7 +76,7 @@ noOverlapping:-
 	rect(B2),
 	B \= B2,
 	insideTable(X,Y),
-	atMost(1, [starts-B-X-Y, starts-B2-X-Y]),
+	atMost(1, [fills-B-X-Y, fills-B2-X-Y]),
 	fail.
 noOverlapping.
 
@@ -88,26 +85,29 @@ noOverlapping.
 %%%%%%%%%%%%%%%%%%%%%%%
 %%%%%% show the solution. Here M contains the literals that are true in the model:
 
-displaySol(M):- write(M),nl,fail.
+displaySol(M):- 
+	yCoord(Y),
+ 	height(H), 
+ 	Y2 is H - Y + 1, 
+ 	writeBars,nl,
+ 	xCoord(X), 
+ 	member(fills-B-X-Y2, M),
+ 	writeNumber(B),
+
+ 	fail.
 displaySol(_).
 
-writeLiterals(M,N):-
-	member(fills-B-X-Y,M),
-	rect(B,X,Y),
-	write(B),
-	write(' '),
-	N is N+1,
-	fail.
-writeLiterals.
+writeNumber(B):- B < 10, write('  '), write(B), write("  |").
+writeNumber(B):- B >= 10, write(' '), write(B), write("  |").
 
-loop_entry(B,X,Y) :-
-  X > 0,
-  X1 is X - 1,
-  write(B),
-  write(' '),
-  nl,
-  loop_entry(B,X1,Y).
-loop_entry(B,X,Y).
+writeBars:-
+	nl,
+	width(W),
+	Wend is W*6-1,
+	between(0,Wend,W2),
+ 	write("_"),
+ 	fail.
+writeBars.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 
