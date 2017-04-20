@@ -1,4 +1,4 @@
-:-include(entradaPacking3).
+:-include(entradaPacking5).
 :-dynamic(varNumber/3).
 symbolicOutput(0). % set to 1 to see symbolic output only; 0 otherwise.
 
@@ -37,8 +37,6 @@ insideTable(X,Y):- width(W), height(H), between(1,W,X), between(1,H,Y).
 %  fills-B-X-Y:   box B fills cell with upper-right coordinates (X,Y)
 % cantonada esquerra inferior es starts i fills es tot el que pintaries dintre (inclós el starts)
 
-
-
 writeClauses:-
 	assignPiece,
 	fill,
@@ -68,6 +66,8 @@ fill:-
 	between(X,X2, ITX),
 	between(Y,Y2, ITY),
 	writeClause([\+starts-B-X-Y, fills-B-ITX-ITY]),
+	%writeClause([\+fills-B-ITX-ITY, starts-B-X-Y]),
+
 	fail.
 fill.
 
@@ -80,8 +80,6 @@ noOverlapping:-
 	fail.
 noOverlapping.
 
-
-
 %%%%%%%%%%%%%%%%%%%%%%%
 %%%%%% show the solution. Here M contains the literals that are true in the model:
 
@@ -89,22 +87,36 @@ displaySol(M):-
 	yCoord(Y),
  	height(H), 
  	Y2 is H - Y + 1, 
- 	writeBars,nl,
+ 	%writeBars,
+ 	nl,
  	xCoord(X), 
- 	member(fills-B-X-Y2, M),
- 	writeNumber(B),
-
+ 	writeNumber(B,X,Y2,M),
  	fail.
 displaySol(_).
 
-writeNumber(B):- B < 10, write('  '), write(B), write("  |").
-writeNumber(B):- B >= 10, write(' '), write(B), write("  |").
+writeNumber(B,X,Y,M):- 
+	member(starts-B-X-Y, M),
+	B < 10, write('  '),
+	write(B).
+	%write("  |").
+
+writeNumber(B,X,Y2,M):- 
+	member(starts-B-X-Y2, M), 
+	B >= 10, write(' '), 
+	write(B). 
+	%write("  |").
+
+writeNumber(B,X,Y2,M):- 
+	\+member(starts-B-X-Y2, M),
+
+	write('  '), 
+	write("*").
 
 writeBars:-
 	nl,
 	width(W),
 	Wend is W*6-1,
-	between(0,Wend,W2),
+	between(0,Wend,_),
  	write("_"),
  	fail.
 writeBars.
