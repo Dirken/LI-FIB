@@ -65,11 +65,16 @@ fill:-
 	Y2 is H+Y-1,
 	between(X,X2, ITX),
 	between(Y,Y2, ITY),
-	writeClause([\+starts-B-X-Y, fills-B-ITX-ITY]),
+	findall(fills-B-X-Y, (between(XI, EndX, X), between(YI, EndY, Y)), Lits),
+		   expressAnd(starts-B-XI-YI, Lits),
+	expressAnd(starts-B-X-Y, Lits),
+
 	%writeClause([\+fills-B-ITX-ITY, starts-B-X-Y]),
+
 
 	fail.
 fill.
+
 
 noOverlapping:-
 	rect(B),
@@ -108,7 +113,6 @@ writeNumber(B,X,Y2,M):-
 
 writeNumber(B,X,Y2,M):- 
 	\+member(starts-B-X-Y2, M),
-
 	write('  '), 
 	write("*").
 
@@ -127,6 +131,9 @@ writeBars.
 expressOr( Var, Lits ):- member(Lit,Lits), negate(Lit,NLit), writeClause([ NLit, Var ]), fail.
 expressOr( Var, Lits ):- negate(Var,NVar), writeClause([ NVar | Lits ]),!.
 
+% Express that Var is equivalent to the conjunction of Lits:
+expressAnd( Var, Lits ):- negate(Var,NVar), member(Lit,Lits),  writeClause([ NVar, Lit ]), fail.
+expressAnd( Var, Lits ):- negateAll(Lits,NLits), writeClause([ Var | NLits ]),!.
 
 %%%%%% Cardinality constraints on arbitrary sets of literals Lits:
 
