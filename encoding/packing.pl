@@ -1,4 +1,4 @@
-:-include(entradaPacking5).
+:-include(entradaCustom).
 :-dynamic(varNumber/3).
 symbolicOutput(0). % set to 1 to see symbolic output only; 0 otherwise.
 
@@ -61,17 +61,8 @@ itFits.
 fill:-
 	rect(B,W,H),
 	itFits(B,X,Y),
-	X2 is W+X-1,
-	Y2 is H+Y-1,
-	between(X,X2, ITX),
-	between(Y,Y2, ITY),
-	findall(fills-B-X-Y, (between(XI, EndX, X), between(YI, EndY, Y)), Lits),
-		   expressAnd(starts-B-XI-YI, Lits),
-	expressAnd(starts-B-X-Y, Lits),
-
-	%writeClause([\+fills-B-ITX-ITY, starts-B-X-Y]),
-
-
+	alreadyFilled(B,X,Y,ITX,ITY),
+	writeClause([\+starts-B-X-Y, fills-B-ITX-ITY]),
 	fail.
 fill.
 
@@ -95,26 +86,37 @@ displaySol(M):-
  	%writeBars,
  	nl,
  	xCoord(X), 
- 	writeNumber(B,X,Y2,M),
+ 	emptySpaces(X,Y2,M),
  	fail.
 displaySol(_).
 
-writeNumber(B,X,Y,M):- 
-	member(starts-B-X-Y, M),
-	B < 10, write('  '),
+alreadyFilled(B,XI,YI,X,Y):- 
+	rect(B,W,H), 
+	EndX is XI + W - 1, 
+	EndY is YI + H - 1, 
+	between(XI, EndX, X), 
+	between(YI, EndY, Y).
+alreadyFilled.
+
+emptySpaces(X0,Y0,M):- 
+	member(starts-B-X-Y, M), 
+	alreadyFilled(B,X,Y,X0,Y0), 
+	writeNumber(B).
+emptySpaces(X,Y,M).	
+
+
+writeNumber(B):- 
+	B < 10, 
+	write('  '),
 	write(B).
 	%write("  |").
 
-writeNumber(B,X,Y2,M):- 
-	member(starts-B-X-Y2, M), 
-	B >= 10, write(' '), 
+writeNumber(B):- 
+	B >= 10, 
+	write(' '), 
 	write(B). 
 	%write("  |").
 
-writeNumber(B,X,Y2,M):- 
-	\+member(starts-B-X-Y2, M),
-	write('  '), 
-	write("*").
 
 writeBars:-
 	nl,
